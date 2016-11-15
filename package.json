@@ -1,0 +1,37 @@
+{
+  "name": "kk-router",
+  "description": "Router middleware for koa. Based koa-router,has regExp filter. ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amenema/kk-router.git"
+  },
+  "main": "lib/router.js",
+  "files": [
+    "lib"
+  ],
+  "author": "Alex Mingoia <talk@alexmingoia.com>",
+  "version": "0.1.0",
+  "keywords": [
+    "koa",
+    "middleware",
+    "router",
+    "route",
+    "filter",
+    "regEx p"
+  ],
+  "dependencies": {},
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "engines": {
+    "node": "> 4.0"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amenema/kk-router/issues"
+  },
+  "homepage": "https://github.com/amenema/kk-router#readme",
+  "directories": {
+    "test": "test"
+  }
+}
