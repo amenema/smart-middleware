@@ -19,7 +19,9 @@
     "filter",
     "regExp"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "require-dir": "^0.3.1"
+  },
   "scripts": {
     "test": "node test/test.js"
   },
