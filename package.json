@@ -23,7 +23,7 @@
     "require-dir": "^0.3.1"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "mocha -r should"
   },
   "engines": {
     "node": "> 4.0"
@@ -35,5 +35,12 @@
   "homepage": "https://github.com/amenema/kk-router",
   "directories": {
     "test": "test"
+  },
+  "devDependencies": {
+    "koa": "^1.2.4",
+    "koa-router": "^5.4.0",
+    "mocha": "^3.1.2",
+    "should": "^11.1.1",
+    "supertest": "^2.0.1"
   }
 }
