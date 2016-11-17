@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/amenema/smart-middleware/badge.svg?branch=master)](https://coveralls.io/github/amenema/smart-middleware?branch=master)
 [![npm](https://img.shields.io/npm/l/express.svg?style=flat-square)](https://github.com/amenema/smart-middleware/https://github.com/amenema/smart-middleware/blob/master/LICENSE)
  
- Router middleware for [koa](https://github.com/koajs/koa/tree/v2.x) v2.
+ Router middleware for [koa](https://github.com/koajs/koa/).
 
 > feedbacks are welcome
 
@@ -69,6 +69,7 @@ module.exports = function(router){
 
 when you visited the '/list' url , the response body is '_m_3_m_4_m_1_m_2/list'
 when you visited the '/open/user'  url , the response body is '_m_1/open/user' 
+
 ### middleware roles
  *    template: {url: 'url', fn: [fn1,fn2]}
  *    url: (url.indexOf('\') === 0)? 'this is regexp' : 'this is common String'
@@ -77,10 +78,12 @@ when you visited the '/open/user'  url , the response body is '_m_1/open/user'
  *    reference koa Onion model, in the middleware array ,
       the middleware[0] was wrapped in the middleware[length-1];
  *    in the fn array , is opposite on the middle array. the fn[length-1] was wrapped in the fn[0];
+
 ## Test
 ```
 npm test
 ```
+
 ## Support
 If you have any problem or suggestion please open an [issue](https://github.com/amenema/smart-middleware/issues) here.
 
