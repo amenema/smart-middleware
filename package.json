@@ -23,7 +23,8 @@
     "require-dir": "^0.3.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha node ./node_modules/.bin/istanbul cover",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "engines": {
     "node": "> 4.0"
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.15",
+    "istanbul": "^0.4.5",
     "koa": "^1.2.4",
     "koa-router": "^5.4.0",
     "mocha": "^3.1.2",
