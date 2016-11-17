@@ -1,16 +1,16 @@
 {
-  "name": "kk-router",
-  "description": "Router middleware for koa. Based koa-router,has regExp filter. ",
+  "name": "smart-middleware",
+  "description": "auto load middleware, auto matching middleware by config",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amenema/kk-router.git"
+    "url": "git+https://github.com/amenema/smart-middleware.git"
   },
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "author": "amenema <menzhongxin@163.com>",
-  "version": "0.1.7",
+  "version": "0.1.0",
   "keywords": [
     "koa",
     "middleware",
@@ -30,9 +30,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/amenema/kk-router/issues"
+    "url": "https://github.com/amenema/smart-middleware/issues"
   },
-  "homepage": "https://github.com/amenema/kk-router",
+  "homepage": "https://github.com/amenema/smart-middleware",
   "directories": {
     "test": "test"
   },
