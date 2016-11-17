@@ -26,7 +26,7 @@ var sm = require('smart-middleware');
 var router = require('koa-router')();
 var app = require('koa-router')();
 
-var middleware = [
+var middlewares = [
                    {url: '/list',
                      fn: [function *(next){
                        "use strict";
@@ -52,7 +52,7 @@ var middleware = [
                      yield next;
                    }]}
                  ];
-sm.autoLoading({router: router/*required*/, middleware:middleware, path:__dirname +'/routers'/*required absolute path*/});
+sm.autoLoading({router: router/*required*/, middleware:middlewares, path:__dirname +'/routers'/*required absolute path*/});
 app.use(router.routes());
 
 
@@ -67,6 +67,16 @@ module.exports = function(router){
 };
 ```
 
+when you visited the '/list' url , the response body is '_m_3_m_4_m_1_m_2/list'
+when you visited the '/open/user'  url , the response body is '_m_1/open/user' 
+### middleware roles
+ *    template: {url: 'url', fn: [fn1,fn2]}
+ *    url: (url.indexOf('\') === 0)? 'this is regexp' : 'this is common String'
+
+### middle load rules:
+ *    reference koa Onion model, in the middleware array ,
+      the middleware[0] was wrapped in the middleware[length-1];
+ *    in the fn array , is opposite on the middle array. the fn[length-1] was wrapped in the fn[0];
 ## Test
 ```
 npm test
