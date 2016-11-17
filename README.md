@@ -16,7 +16,7 @@
 ## Installation
 install with [npm](https://www.npmjs.com/package/smart-middleware)
 ```
-npm install koa-router
+npm install smart-middleware
 ```
 
 ## Usage
