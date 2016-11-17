@@ -8,7 +8,8 @@
  Router middleware for [koa](https://github.com/koajs/koa/).
 
 > feedbacks are welcome
-
+## CN
+[click here](http://menzhongxin.com/2016/11/17/smart-middleware/)
 ## Features
 * auto loading router
 * auto matching middleware by config 
