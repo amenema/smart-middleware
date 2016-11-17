@@ -23,7 +23,7 @@
     "require-dir": "^0.3.1"
   },
   "scripts": {
-    "test": "mocha node ./node_modules/.bin/istanbul cover",
+    "test": "node ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --colors ./test/test.js",
     "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "engines": {
