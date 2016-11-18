@@ -14,25 +14,30 @@ module.exports = [
   {url: '/list',
     fn: [function *(next){
       "use strict";
-      this.body += '_m_1';
+      this.body = '_m_1';
       yield next;
+      this.body += '_end_1';
     }, function *(next){
       "use strict";
       this.body += '_m_2';
       yield next;
+      this.body += "_end_2";
     }
     ]},
   {url: '\\^(?!/open)', fn: [function *(next){
     "use strict";
-    this.body = '_m_3';
+    this.body += '_m_3';
     yield next;
+    this.body += '_end_3';
   }, function *(next){
     "use strict";
     this.body += '_m_4';
     yield next;
+    this.body += '_end_4';
   }]}
-  ,{url: '\\(/open)', fn: [function *(next){
+  ,{url: '\\^(/open)', fn: [function *(next){
     this.body = '_m_1';
     yield next;
+    this.body += '_end_1';
   }]}
 ];

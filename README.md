@@ -29,31 +29,36 @@ var router = require('koa-router')();
 var app = require('koa-router')();
 
 var middlewares = [
-                   {url: '/list',
-                     fn: [function *(next){
-                       "use strict";
-                       this.body += '_m_1';
-                       yield next;
-                     }, function *(next){
-                       "use strict";
-                       this.body += '_m_2';
-                       yield next;
-                     }
-                     ]},
-                   {url: '\\^(?!/open)', fn: [function *(next){
-                     "use strict";
-                     this.body = '_m_3';
-                     yield next;
-                   }, function *(next){
-                     "use strict";
-                     this.body += '_m_4';
-                     yield next;
-                   }]}
-                   ,{url: '\\(/open)', fn: [function *(next){
-                     this.body = '_m_1';
-                     yield next;
-                   }]}
-                 ];
+                    {url: '/list',
+                      fn: [function *(next){
+                        "use strict";
+                        this.body = '_m_1';
+                        yield next;
+                        this.body += '_end_1';
+                      }, function *(next){
+                        "use strict";
+                        this.body += '_m_2';
+                        yield next;
+                        this.body += "_end_2";
+                      }
+                      ]},
+                    {url: '\\^(?!/open)', fn: [function *(next){
+                      "use strict";
+                      this.body += '_m_3';
+                      yield next;
+                      this.body += '_end_3';
+                    }, function *(next){
+                      "use strict";
+                      this.body += '_m_4';
+                      yield next;
+                      this.body += '_end_4';
+                    }]}
+                    ,{url: '\\^(/open)', fn: [function *(next){
+                      this.body = '_m_1';
+                      yield next;
+                      this.body += '_end_1';
+                    }]}
+                  ];
 sm.autoLoading({router: router/*required*/, middleware:middlewares, path:__dirname +'/routers'/*required absolute path*/});
 app.use(router.routes());
 
@@ -69,17 +74,16 @@ module.exports = function(router){
 };
 ```
 
-when you visited the '/list' url , the response body is '_m_3_m_4_m_1_m_2/list'
-when you visited the '/open/user'  url , the response body is '_m_1/open/user' 
+when you visited the '**/list**' url , the response body is **\_m_1_m_2_m_3_m_4/list_end_4_end_3_end_2_end_1**
+when you visited the '**/open/user**'  url , the response body is **\_m_1/open/user_end_1** 
 
 ### middleware roles
- *    template: {url: 'url', fn: [fn1,fn2]}
- *    url: (url.indexOf('\') === 0)? 'this is regexp' : 'this is common String'
+ * template: **\{url: 'url', fn: [fn1,fn2]}**
+ * if template.url beginning with '**\\\\**', it will be matched by regExp, else it will be matched by '**===**'; 
 
 ### middle load rules:
- *    reference koa Onion model, in the middleware array ,
-      the middleware[0] was wrapped in the middleware[length-1];
- *    in the fn array , is opposite on the middle array. the fn[length-1] was wrapped in the fn[0];
+* the loading sequence is the middleware order; like the above example, when middlewares are **\[[m1, m2], [m3, m4]]**, 
+the loading sequence are **\[[m1, m2], [m3, m4]]**.  
 
 ## Test
 ```

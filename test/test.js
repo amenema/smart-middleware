@@ -3,11 +3,25 @@
  */
 var kk = require('../lib/index.js')
   , middleware = require('./middleware.js')
+  , utils = require('../lib/utils.js')
   , app = require('koa')()
   , router = require('koa-router')()
   , request = require('supertest')
   , should = require('should')
   , req;
+
+describe('utils', function(){
+  "use strict";
+  it("isArray", function(done){
+    utils.isArray({}).should.be.false();
+    utils.isArray([]).should.be.true();
+    utils.isArray('').should.be.false();
+    utils.isArray(1).should.be.false();
+    utils.isArray(true).should.be.false();
+    utils.isArray(function(){}).should.be.false();
+    done();
+  })
+});
 
 describe('autoLoading', function(){
   "use strict";
@@ -24,7 +38,8 @@ describe('autoLoading', function(){
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function(err, res){
-        res.text.should.be.eql('_m_3_m_4_m_1_m_2/list');
+        console.log(res.text);
+        res.text.should.be.eql('_m_1_m_2_m_3_m_4/list_end_4_end_3_end_2_end_1');
         done();
       });
   });
@@ -35,7 +50,8 @@ describe('autoLoading', function(){
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function(err, res){
-        res.text.should.be.eql('_m_1/open/user');
+        console.log(res.text);
+        res.text.should.be.eql('_m_1/open/user_end_1');
         done();
       });
   });
