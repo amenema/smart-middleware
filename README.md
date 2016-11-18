@@ -74,11 +74,11 @@ module.exports = function(router){
 };
 ```
 
-when you visited the '**/list**' url , the response body is **\_m_1_m_2_m_3_m_4/list_end_4_end_3_end_2_end_1**
-when you visited the '**/open/user**'  url , the response body is **\_m_1/open/user_end_1** 
+* when you visited the '**/list**' url , the response body is **\_m_1_m_2_m_3_m_4/list_end_4_end_3_end_2_end_1**
+* when you visited the '**/open/user**'  url , the response body is **\_m_1/open/user_end_1** 
 
 ### middleware roles
- * template: **\{url: 'url', fn: [fn1,fn2]}**
+ * template: **\{url: 'url', fn: [m1,m2]}**
  * if template.url beginning with '**\\\\**', it will be matched by regExp, else it will be matched by '**===**'; 
 
 ### middle load rules:
