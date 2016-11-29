@@ -74,16 +74,16 @@ module.exports = function(router){
 };
 ```
 
-* when you visited the '**/list**' url , the response body is **\_m_1_m_2_m_3_m_4/list_end_4_end_3_end_2_end_1**
-* when you visited the '**/open/user**'  url , the response body is **\_m_1/open/user_end_1** 
+* when you visit the '**/list**' url, the response body is **\_m_1_m_2_m_3_m_4/list_end_4_end_3_end_2_end_1**
+* when you visit the '**/open/user**' url , the response body is **\_m_1/open/user_end_1** 
 
 ### middleware roles
  * template: **\{url: 'url', fn: [m1,m2]}**
- * if template.url beginning with '**\\\\**', it will be matched by regExp, else it will be matched by '**===**'; 
+ * if template.url begins with '**\\\\**', it will be matched by regExp, else it will be matched by '**===**'; 
 
-### middle load rules:
-* the loading sequence is the middleware order; like the above example, when middlewares are **\[[m1, m2], [m3, m4]]**, 
-the loading sequence are **\[[m1, m2], [m3, m4]]**.  
+### middleware load rules:
+* the loading sequence is sorted by the middleware; like the example above, when middlewares are **\[[m1, m2], [m3, m4]]**, 
+the loading sequences are **\[[m1, m2], [m3, m4]]**.  
 
 ## Test
 ```
