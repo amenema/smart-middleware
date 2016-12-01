@@ -38,6 +38,7 @@
     "test": "test"
   },
   "devDependencies": {
+    "lodash": "^4.17.2",
     "coveralls": "^2.11.15",
     "istanbul": "^0.4.5",
     "koa": "^1.2.4",

@@ -28,7 +28,7 @@ var sm = require('smart-middleware');
 var router = require('koa-router')();
 var app = require('koa-router')();
 
-var middlewares = [
+var rules = [
                     {url: '/list',
                       fn: [function *(next){
                         "use strict";
@@ -59,7 +59,7 @@ var middlewares = [
                       this.body += '_end_1';
                     }]}
                   ];
-sm.autoLoading({router: router/*required*/, middleware:middlewares, path:__dirname +'/routers'/*required absolute path*/});
+sm.autoLoading(path:__dirname +'/routers'/*required absolute path*/, {router: router/*required*/, rules: rules});
 app.use(router.routes());
 
 
