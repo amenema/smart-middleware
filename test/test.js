@@ -6,15 +6,58 @@ var sm = require('../lib/index.js')
   , middleware = require('./middleware.js')
   , utils = require('../lib/utils.js')
   , app = require('koa')()
+  , path = require('path')
   , router = require('koa-router')()
   , request = require('supertest')
   , should = require('should')
   , req
 
+describe('util test', () => {
+  let routers,config,fakeUrl
+  beforeEach( () => {
+    routers = path.join(__dirname, '/routers')
+    config = path.join(__dirname, './middleware.js')
+    fakeUrl = path.join(__dirname, '/fake')
+  })
 
+  it('throw err', (done) => {
+    utils.load('', (err, rs) => {
+      err.message.should.be.equal("ENOENT: no such file or directory, scandir ''")
+      done()
+    })
+  })
 
+  it('exists', (done) => {
+    utils.exists(routers).should.be.true()
+    utils.exists(fakeUrl).should.be.false()
+    done()
+  })
 
-describe('utils', () => {
+  it('isDir', (done) => {
+    utils.isDir(routers).should.be.true()
+    utils.isDir(config).should.be.false()
+    done()
+  })
+
+  it('isFile', (done) => {
+    utils.isFile(routers).should.be.false()
+    utils.isFile(config).should.be.true()
+    done()
+  })
+
+  it('load a file', (done) => {
+    utils.load(config, (err, rs) => {
+      rs.length.should.be.equal(0)
+      done()
+    })
+  })
+
+  it('load a dir', (done) => {
+    utils.load(routers, (err, rs) => {
+      rs.length.should.be.equal(2)
+      done()
+    })
+  })
 
   it("isArray", done => {
     utils.isArray({}).should.be.false()
@@ -25,7 +68,9 @@ describe('utils', () => {
     utils.isArray(() => {}).should.be.false()
     done()
   })
+
 })
+
 
 describe('autoLoading', () => {
 
